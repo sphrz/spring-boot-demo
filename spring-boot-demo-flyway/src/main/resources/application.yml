@@ -1,3 +1,4 @@
+
 spring:
   flyway:
     enabled: true
@@ -11,8 +12,12 @@ spring:
     baseline-on-migrate: true
     # 基础版本 0
     baseline-version: 0
+    table: "version_history"
+    locations: "classpath:db/migration,classpath:dbscript"
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/flyway-test?useSSL=false
+    url: jdbc:mysql://127.0.0.1:3306/flyway-test?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC
     username: root
-    password: root
+    password: 123456
     type: com.zaxxer.hikari.HikariDataSource
+server:
+  port: 8859

@@ -52,8 +52,7 @@ public class AuthController {
     public ApiResponse login(@Valid @RequestBody LoginRequest loginRequest) {
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUsernameOrEmailOrPhone(), loginRequest.getPassword()));
 
-        SecurityContextHolder.getContext()
-                .setAuthentication(authentication);
+        SecurityContextHolder.getContext().setAuthentication(authentication);
 
         String jwt = jwtUtil.createJWT(authentication,loginRequest.getRememberMe());
         return ApiResponse.ofSuccess(new JwtResponse(jwt));

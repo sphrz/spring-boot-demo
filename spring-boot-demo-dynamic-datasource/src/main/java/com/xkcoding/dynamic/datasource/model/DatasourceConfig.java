@@ -63,7 +63,7 @@ public class DatasourceConfig implements Serializable {
      * @return JDBC URL
      */
     public String buildJdbcUrl() {
-        return String.format("jdbc:mysql://%s:%s/%s?useUnicode=true&characterEncoding=utf-8&useSSL=false", this.host, this.port, this.database);
+        return String.format("jdbc:mysql://%s:%s/%s?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC", this.host, this.port, this.database);
     }
 
 }

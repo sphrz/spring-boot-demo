@@ -21,13 +21,13 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/test")
 public class TestController {
-    @GetMapping
+    @GetMapping(value="/list")
     public ApiResponse list() {
         log.info("测试列表查询");
         return ApiResponse.ofMessage("测试列表查询");
     }
 
-    @PostMapping
+    @PostMapping(value="/list")
     public ApiResponse add() {
         log.info("测试列表添加");
         return ApiResponse.ofMessage("测试列表添加");

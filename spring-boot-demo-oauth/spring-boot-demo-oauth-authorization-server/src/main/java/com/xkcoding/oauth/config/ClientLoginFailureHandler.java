@@ -25,7 +25,6 @@ public class ClientLoginFailureHandler implements AuthenticationFailureHandler {
                                         AuthenticationException exception) throws IOException {
         log.debug("Login failed!");
         response.setStatus(HttpStatus.UNAUTHORIZED.value());
-        response.sendRedirect("/oauth/login?error="
-            + URLEncoder.encode(exception.getLocalizedMessage(), "UTF-8"));
+        response.sendRedirect("/oauth/login?error=" + URLEncoder.encode(exception.getLocalizedMessage(), "UTF-8"));
     }
 }

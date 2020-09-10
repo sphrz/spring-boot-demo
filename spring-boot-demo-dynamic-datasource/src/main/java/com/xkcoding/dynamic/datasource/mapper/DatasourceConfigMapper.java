@@ -1,6 +1,6 @@
 package com.xkcoding.dynamic.datasource.mapper;
 
-import com.xkcoding.dynamic.datasource.config.MyMapper;
+import com.xkcoding.dynamic.datasource.config.BaseMapper;
 import com.xkcoding.dynamic.datasource.model.DatasourceConfig;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -13,5 +13,5 @@ import org.apache.ibatis.annotations.Mapper;
  * @date Created in 2019/9/4 16:20
  */
 @Mapper
-public interface DatasourceConfigMapper extends MyMapper<DatasourceConfig> {
+public interface DatasourceConfigMapper extends BaseMapper<DatasourceConfig> {
 }

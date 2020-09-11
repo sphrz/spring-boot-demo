@@ -1,6 +1,8 @@
 package com.xkcoding.dynamic.datasource.model;
 
+import com.xkcoding.dynamic.datasource.utils.UUIdGenId;
 import lombok.Data;
+import tk.mybatis.mapper.annotation.KeySql;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
@@ -22,40 +24,44 @@ public class DatasourceConfig implements Serializable {
     /**
      * 主键
      */
+//    @Id
+//    @Column(name = "`id`")
+//    @GeneratedValue(generator = "JDBC")
+//    private Long id;
     @Id
-    @Column(name = "`id`")
-    @GeneratedValue(generator = "JDBC")
-    private Long id;
+    @Column(name = "id")
+    @KeySql(genId = UUIdGenId.class)
+    private String id;
 
     /**
      * 数据库地址
      */
-    @Column(name = "`host`")
+    @Column(name = "host")
     private String host;
 
     /**
      * 数据库端口
      */
-    @Column(name = "`port`")
+    @Column(name = "port")
     private Integer port;
 
     /**
      * 数据库用户名
      */
-    @Column(name = "`username`")
+    @Column(name = "username")
     private String username;
 
     /**
      * 数据库密码
      */
-    @Column(name = "`password`")
+    @Column(name = "password")
     private String password;
 
     /**
      * 数据库名称
      */
-    @Column(name = "`database`")
-    private String database;
+    @Column(name = "db_name")
+    private String dbName;
 
     /**
      * 构造JDBC URL
@@ -63,7 +69,8 @@ public class DatasourceConfig implements Serializable {
      * @return JDBC URL
      */
     public String buildJdbcUrl() {
-        return String.format("jdbc:mysql://%s:%s/%s?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC", this.host, this.port, this.database);
+//        return String.format("jdbc:mysql://%s:%s/%s?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC", this.host, this.port, this.database);
+        return String.format("jdbc:sqlserver://%s:%s;SelectMethod=cursor;databasename=%s;username=%s;password=%s;sendStringParametersAsUnicode=false", this.host, this.port, this.dbName,this.username,this.password);
     }
 
 }

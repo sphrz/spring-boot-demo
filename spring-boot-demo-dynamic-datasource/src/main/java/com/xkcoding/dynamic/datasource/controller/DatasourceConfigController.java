@@ -37,7 +37,7 @@ public class DatasourceConfigController {
      */
     @DeleteMapping("/config/{id}")
     @DefaultDatasource
-    public void removeConfig(@PathVariable Long id) {
+    public void removeConfig(@PathVariable String id) {
         configMapper.deleteByPrimaryKey(id);
         DatasourceConfigCache.INSTANCE.removeConfig(id);
     }

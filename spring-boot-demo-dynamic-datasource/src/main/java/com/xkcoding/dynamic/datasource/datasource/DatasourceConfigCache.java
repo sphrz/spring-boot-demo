@@ -22,7 +22,7 @@ public enum DatasourceConfigCache {
     /**
      * 管理动态数据源列表。
      */
-    private static final Map<Long, DatasourceConfig> CONFIG_CACHE = new ConcurrentHashMap<>();
+    private static final Map<String, DatasourceConfig> CONFIG_CACHE = new ConcurrentHashMap<>();
 
     /**
      * 添加数据源配置
@@ -30,7 +30,7 @@ public enum DatasourceConfigCache {
      * @param id     数据源配置id
      * @param config 数据源配置
      */
-    public synchronized void addConfig(Long id, DatasourceConfig config) {
+    public synchronized void addConfig(String id, DatasourceConfig config) {
         CONFIG_CACHE.put(id, config);
     }
 
@@ -40,7 +40,7 @@ public enum DatasourceConfigCache {
      * @param id 数据源配置id
      * @return 数据源配置
      */
-    public synchronized DatasourceConfig getConfig(Long id) {
+    public synchronized DatasourceConfig getConfig(String id) {
         if (CONFIG_CACHE.containsKey(id)) {
             return CONFIG_CACHE.get(id);
         }
@@ -50,7 +50,7 @@ public enum DatasourceConfigCache {
     /**
      * 清除数据源配置
      */
-    public synchronized void removeConfig(Long id) {
+    public synchronized void removeConfig(String id) {
         CONFIG_CACHE.remove(id);
         // 同步清除 DatasourceHolder 对应的数据源
         DatasourceHolder.INSTANCE.removeDatasource(id);

@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS `datasource_config`
 (
-    `id`       bigint(13)   NOT NULL AUTO_INCREMENT COMMENT '主键',
+    `id`       varchar(32)   NOT NULL AUTO_INCREMENT COMMENT '主键',
     `host`     varchar(255) NOT NULL COMMENT '数据库地址',
     `port`     int(6)       NOT NULL COMMENT '数据库端口',
     `username` varchar(100) NOT NULL COMMENT '数据库用户名',
@@ -11,6 +11,6 @@ CREATE TABLE IF NOT EXISTS `datasource_config`
   DEFAULT CHARSET = utf8 COMMENT ='数据源配置表';
 
 INSERT INTO `datasource_config`(`id`, `host`, `port`, `username`, `password`, `database`)
-VALUES (1, '127.0.01', 3306, 'root', 'root', 'test');
+VALUES ('10000000-0000-0000-0000-000000000001', '127.0.01', 3306, 'root', 'root', 'test');
 INSERT INTO `datasource_config`(`id`, `host`, `port`, `username`, `password`, `database`)
-VALUES (2, '192.168.239.4', 3306, 'dmcp', 'Dmcp321!', 'test');
+VALUES ('10000000-0000-0000-0000-000000000001', '192.168.239.4', 3306, 'dmcp', 'Dmcp321!', 'test');

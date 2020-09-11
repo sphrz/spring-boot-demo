@@ -9,7 +9,7 @@ package com.xkcoding.dynamic.datasource.datasource;
  * @date Created in 2019/9/4 14:16
  */
 public class DatasourceConfigContextHolder {
-    private static final ThreadLocal<Long> DATASOURCE_HOLDER = ThreadLocal.withInitial(() -> DatasourceHolder.DEFAULT_ID);
+    private static final ThreadLocal<String> DATASOURCE_HOLDER = ThreadLocal.withInitial(() -> DatasourceHolder.DEFAULT_ID);
 
     /**
      * 设置默认数据源
@@ -24,7 +24,7 @@ public class DatasourceConfigContextHolder {
      *
      * @return 数据源配置id
      */
-    public static Long getCurrentDatasourceConfig() {
+    public static String getCurrentDatasourceConfig() {
         return DATASOURCE_HOLDER.get();
     }
 
@@ -33,7 +33,7 @@ public class DatasourceConfigContextHolder {
      *
      * @param id 数据源配置id
      */
-    public static void setCurrentDatasourceConfig(Long id) {
+    public static void setCurrentDatasourceConfig(String id) {
         DATASOURCE_HOLDER.set(id);
     }
 

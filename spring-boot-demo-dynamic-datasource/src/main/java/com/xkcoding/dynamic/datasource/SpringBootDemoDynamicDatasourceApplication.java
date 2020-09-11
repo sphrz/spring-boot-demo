@@ -2,6 +2,7 @@ package com.xkcoding.dynamic.datasource;
 
 import com.xkcoding.dynamic.datasource.datasource.DatasourceConfigCache;
 import com.xkcoding.dynamic.datasource.datasource.DatasourceConfigContextHolder;
+import com.xkcoding.dynamic.datasource.launch.ApplicationLaunch;
 import com.xkcoding.dynamic.datasource.mapper.DatasourceConfigMapper;
 import com.xkcoding.dynamic.datasource.model.DatasourceConfig;
 import lombok.RequiredArgsConstructor;
@@ -27,6 +28,7 @@ public class SpringBootDemoDynamicDatasourceApplication implements CommandLineRu
 
     public static void main(String[] args) {
         SpringApplication.run(SpringBootDemoDynamicDatasourceApplication.class, args);
+//        ApplicationLaunch.run("spring-boot-demo-dynamic-datasource",SpringBootDemoDynamicDatasourceApplication.class, args);
     }
 
     @Override

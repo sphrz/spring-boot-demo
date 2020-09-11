@@ -22,7 +22,7 @@ public class DynamicDataSource extends HikariDataSource {
     @Override
     public Connection getConnection() throws SQLException {
         // 获取当前数据源 id
-        Long id = DatasourceConfigContextHolder.getCurrentDatasourceConfig();
+        String id = DatasourceConfigContextHolder.getCurrentDatasourceConfig();
         // 根据当前id获取数据源
         HikariDataSource datasource = DatasourceHolder.INSTANCE.getDatasource(id);
 
@@ -38,7 +38,7 @@ public class DynamicDataSource extends HikariDataSource {
      * @param id 数据源id
      * @return 数据源
      */
-    private HikariDataSource initDatasource(Long id) {
+    private HikariDataSource initDatasource(String id) {
         HikariDataSource dataSource = new HikariDataSource();
 
         // 判断是否是默认数据源
@@ -48,7 +48,7 @@ public class DynamicDataSource extends HikariDataSource {
             dataSource.setJdbcUrl(properties.getUrl());
             dataSource.setUsername(properties.getUsername());
             dataSource.setPassword(properties.getPassword());
-            dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+            dataSource.setDriverClassName(properties.getDriverClassName());
         } else {
             // 不是默认数据源，通过缓存获取对应id的数据源的配置
             DatasourceConfig datasourceConfig = DatasourceConfigCache.INSTANCE.getConfig(id);
@@ -60,7 +60,7 @@ public class DynamicDataSource extends HikariDataSource {
             dataSource.setJdbcUrl(datasourceConfig.buildJdbcUrl());
             dataSource.setUsername(datasourceConfig.getUsername());
             dataSource.setPassword(datasourceConfig.getPassword());
-            dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+            dataSource.setDriverClassName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         }
         // 将创建的数据源添加到数据源管理器中，绑定当前线程
         DatasourceHolder.INSTANCE.addDatasource(id, dataSource);

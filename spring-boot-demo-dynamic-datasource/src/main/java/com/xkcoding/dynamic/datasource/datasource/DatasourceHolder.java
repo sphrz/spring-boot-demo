@@ -29,12 +29,12 @@ public enum DatasourceHolder {
     /**
      * 默认数据源的id
      */
-    public static final Long DEFAULT_ID = -1L;
+    public static final String DEFAULT_ID = "10000000-0000-0000-0000-000000000000";
 
     /**
      * 管理动态数据源列表。
      */
-    private static final Map<Long, DatasourceManager> DATASOURCE_CACHE = new ConcurrentHashMap<>();
+    private static final Map<String, DatasourceManager> DATASOURCE_CACHE = new ConcurrentHashMap<>();
 
     /**
      * 添加动态数据源
@@ -42,7 +42,7 @@ public enum DatasourceHolder {
      * @param id         数据源id
      * @param dataSource 数据源
      */
-    public synchronized void addDatasource(Long id, HikariDataSource dataSource) {
+    public synchronized void addDatasource(String id, HikariDataSource dataSource) {
         DatasourceManager datasourceManager = new DatasourceManager(dataSource);
         DATASOURCE_CACHE.put(id, datasourceManager);
     }
@@ -53,7 +53,7 @@ public enum DatasourceHolder {
      * @param id 数据源id
      * @return 数据源
      */
-    public synchronized HikariDataSource getDatasource(Long id) {
+    public synchronized HikariDataSource getDatasource(String id) {
         if (DATASOURCE_CACHE.containsKey(id)) {
             DatasourceManager datasourceManager = DATASOURCE_CACHE.get(id);
             datasourceManager.refreshTime();
@@ -80,7 +80,7 @@ public enum DatasourceHolder {
      * 清除动态数据源
      * @param id 数据源id
      */
-    public synchronized void removeDatasource(Long id) {
+    public synchronized void removeDatasource(String id) {
         if (DATASOURCE_CACHE.containsKey(id)) {
             // 关闭数据源
             DATASOURCE_CACHE.get(id).getDataSource().close();

@@ -14,7 +14,7 @@ public class LauncherServiceImpl implements LauncherService {
 
     @Override
     public void launcher(SpringApplicationBuilder builder, String appName, String profile) {
-        Properties props = System.getProperties();
+//        Properties props = System.getProperties();
     }
 
 }

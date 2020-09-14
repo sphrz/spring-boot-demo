@@ -27,8 +27,8 @@ public class SpringBootDemoDynamicDatasourceApplication implements CommandLineRu
     private final DatasourceConfigMapper configMapper;
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringBootDemoDynamicDatasourceApplication.class, args);
-//        ApplicationLaunch.run("spring-boot-demo-dynamic-datasource",SpringBootDemoDynamicDatasourceApplication.class, args);
+//        SpringApplication.run(SpringBootDemoDynamicDatasourceApplication.class, args);
+        ApplicationLaunch.run("spring-boot-demo-dynamic-datasource",SpringBootDemoDynamicDatasourceApplication.class, args);
     }
 
     @Override
